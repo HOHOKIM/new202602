@@ -1,9 +1,7 @@
 package com.sparta.springauth.controller;
 
-import com.sparta.springauth.dto.LoginRequestDto;
 import com.sparta.springauth.dto.SignupRequestDto;
 import com.sparta.springauth.service.UserService;
-import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -37,18 +35,6 @@ public class UserController {
     return "redirect:/api/user/login-page";
     }
 
-    @PostMapping("/user/login" )
-    public String login(LoginRequestDto requestDto, HttpServletResponse res ){
-        // .try 활용시 트라이 캐치 구문 단축키로 사용가능
-        try {
-            userService.login(requestDto, res);
-        } catch (Exception e) {
-            return "redirect:/api/user/login-page?error";
-        }
-
-        return"redirect:/";
-
-    }
 
 
 }
